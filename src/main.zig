@@ -6,26 +6,12 @@ const c = @cImport({
 });
 
 pub fn main() !void {
-    // Prints to stderr (it's a shortcut based on `std.io.getStdErr()`)
-    std.debug.print("All your {s} are belong to us.\n", .{"codebase"});
-
-    // stdout is for the actual output of your application, for example if you
-    // are implementing gzip, then only the compressed bytes should be sent to
-    // stdout, not any debugging messages.
-    const stdout_file = std.io.getStdOut().writer();
-    var bw = std.io.bufferedWriter(stdout_file);
-    const stdout = bw.writer();
-
-    try stdout.print("Run `zig build test` to run the tests.\n", .{});
-
-    try bw.flush(); // don't forget to flush!
-
     // ↓ glfw
     std.debug.assert(c.glfwInit() != 0);
     defer c.glfwTerminate();
 
     // Create a windowed mode window and its OpenGL context
-    const window = c.glfwCreateWindow(640, 480, "Hello World", null, null);
+    const window = c.glfwCreateWindow(640, 480, "zig-opengl-glfw-wasm", null, null);
     std.debug.assert(window != null);
     defer c.glfwDestroyWindow(window);
 
@@ -45,7 +31,6 @@ pub fn main() !void {
         var width: c_int = undefined;
         var height: c_int = undefined;
         c.glfwGetFramebufferSize(window, &width, &height);
-        // ratio = width / (float) height;
 
         // game共通部描画
         game.render(width, height);

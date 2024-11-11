@@ -50,7 +50,6 @@ const glBuffers = [];
 const glUniformLocations = [];
 
 const compileShaderProgram = (sourcePtr, sourceLen, type) => {
-  //const source = readCharStr(sourcePtr, sourceLen);
   const source = memToString(sourcePtr);
   const shader = gl.createShader(type);
   gl.shaderSource(shader, source);
@@ -78,11 +77,6 @@ const glClearColor = (r, g, b, a) => gl.clearColor(r, g, b, a);
 const glEnable = x => gl.enable(x);
 const glDepthFunc = x => gl.depthFunc(x);
 const glClear = x => gl.clear(x);
-//const glGetAttribLocation = (programId, namePtr, nameLen) => gl.getAttribLocation(glPrograms[programId], readCharStr(namePtr, nameLen));
-// const glGetUniformLocation = (programId, namePtr, nameLen) =>  {
-//   glUniformLocations.push(gl.getUniformLocation(glPrograms[programId], readCharStr(namePtr, nameLen)));
-//   return glUniformLocations.length - 1;
-// }
 const glGetAttribLocation = (programId, name) => {
   return gl.getAttribLocation(glPrograms[programId], memToString(name));
 }

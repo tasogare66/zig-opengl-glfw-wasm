@@ -34,6 +34,8 @@ var program: u32 = undefined;
 var mvp_location: c_int = undefined;
 
 pub fn init() void {
+    gl.glClearColor(0.0, 0.0, 0.0, 1.0);
+
     var vertex_buffer: gl.GLuint = undefined;
     gl.glGenBuffers(1, &vertex_buffer);
     gl.glBindBuffer(gl.GL_ARRAY_BUFFER, vertex_buffer);
@@ -55,7 +57,7 @@ pub fn init() void {
 
 pub fn render(width: c_int, height: c_int) void {
     gl.glViewport(0, 0, width, height);
-    gl.glClear(gl.GL_COLOR_BUFFER_BIT);
+    gl.glClear(gl.GL_COLOR_BUFFER_BIT | gl.GL_DEPTH_BUFFER_BIT);
 
     var mvp = [_]f32{
         1, 0, 0, 0, //

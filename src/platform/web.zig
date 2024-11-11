@@ -38,9 +38,9 @@ pub const GL_LINEAR = 9729;
 
 // GL
 pub extern fn glViewport(_: c_int, _: c_int, _: c_int, _: c_int) void;
-// pub extern fn glClearColor(_: f32, _: f32, _: f32, _: f32) void;
-// pub extern fn glEnable(_: c_uint) void;
-// pub extern fn glDepthFunc(_: c_uint) void;
+pub extern fn glClearColor(_: f32, _: f32, _: f32, _: f32) void;
+pub extern fn glEnable(_: c_uint) void;
+pub extern fn glDepthFunc(_: c_uint) void;
 // pub extern fn glBlendFunc(_: c_uint, _: c_uint) void;
 pub extern fn glClear(_: c_uint) void;
 pub extern fn glGetAttribLocation(_: c_uint, name: [*:0]const u8) c_int;
